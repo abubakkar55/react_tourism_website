@@ -4,8 +4,8 @@ import logo from "../../images/flight.png";
 import img from "../../images/Paypa-e1541212828289.png";
 const Footer = () => {
     return (
-        <div className="py-20 px-20" style={{ backgroundColor: "#0E2737" }}>
-            <div className="container mx-auto grid grid-cols-4 gap-10">
+        <div className="px-20" style={{ backgroundColor: "#0E2737" }}>
+            <div className="py-20 container mx-auto grid grid-cols-4 gap-8">
                 <div>
                     <img className="inline" src={logo} alt="" />
                     <span className="inline text-white ml-2 font-semibold text-lg">ABTourism </span>
@@ -40,14 +40,17 @@ const Footer = () => {
                             <NavLink activeClassName="font-semibold" to="/manage_all_orders">Manage All Orders </NavLink>
                         </li>
                         <li className="hover:text-puerto-500">
-                            Privacy & Policy 
+                            Privacy & Policy
                         </li>
                     </ul>
                 </div>
                 <div>
-                <h3 className="text-white font-semibold text-lg mb-4"> PAYMENT GETWAT OPTION </h3>
+                    <h3 className="text-white font-semibold text-lg mb-4"> PAYMENT GETWAT OPTION </h3>
                     <img className="h-40" src={img} alt="" />
                 </div>
+            </div>
+            <div className="text-center pb-6  border-t-2">
+                <p className="text-gray-300 mt-6"> Copyright ©2021 abtourism.com |  All rights reserved | This design is made by ab.siddik  </p>
             </div>
         </div>
     )
