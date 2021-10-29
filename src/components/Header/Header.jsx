@@ -10,7 +10,7 @@ const Header = () => {
             <div className="h-20 container mx-auto flex justify-between items-center">
                 <div>
                     <NavLink className="flex items-center" to="/">
-                        <img className="" src={logo} alt="logo" />
+                        <img className="w-12" src={logo} alt="logo" />
                         <span className="ml-2 font-semibold text-lg">ABTourism </span>
                     </NavLink>
                 </div>

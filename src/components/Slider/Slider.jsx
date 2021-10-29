@@ -1,17 +1,34 @@
 import React from 'react';
-import useFirebaseMongo from './../../Hooks/useFirebaseMongo';
+import './Slider.css';
 
-const Slider = () => {
+import useFirebaseMongo from './../../Hooks/useFirebaseMongo';
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from 'react-responsive-carousel';
+import { NavLink } from 'react-router-dom';
+
+const SliderComponent = () => {
     const { mongodb: { sliderData } } = useFirebaseMongo();
     return (
 
-        <div>
+        <div className="slider">
+            <Carousel showArrows={true} autoPlay={true} infiniteLoop={true}>
 
-            {sliderData.length}
+                {sliderData?.data?.map(item => {
+                    return (
+                        <div className="slider-item h-screen flex items-center flex-col justify-center" style={{ backgroundImage: `linear-gradient(to right, rgba(0, 0, 0, 0.36), rgba(0, 0, 0, 0.36)), url(${item?.image})`, backgroundRepeat: "no-repeat", backgroundSize: "100% 100%" }}>
+                            <h1 className="text-6xl font-semibold text-white mb-7"> {item.name} </h1>
+                            <button className="outline-none px-6 py-3 border-2 border-puerto-600 text-white hover:bg-puerto-600">
+                                <NavLink to="/tour">Explore Now </NavLink>
+                            </button>
+                        </div>
+                    )
+                })}
 
+            </Carousel>
         </div>
+
 
     )
 }
 
-export default Slider;
+export default SliderComponent;

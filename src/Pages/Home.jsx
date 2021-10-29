@@ -1,11 +1,13 @@
 import React from 'react'
-import Slider from '../components/Slider/Slider';
+import Newsletter from '../components/Newsletter/Newsletter'
+import SliderComponent from '../components/Slider/Slider'
 
 const Home = () => {
     return (
         <div>
             <section>
-                <Slider />
+                <SliderComponent />
+                <Newsletter/>
             </section>
         </div>
     )
