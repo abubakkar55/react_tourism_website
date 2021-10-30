@@ -11,7 +11,7 @@ const Newsletter = () => {
                 </div>
                 <div className="ml-10">
                     <form>
-                        <input className="outline-none px-6 py-3 w-96 mr-10 rounded-md" type="text" placeholder="your Email address" />
+                        <input className="outline-none px-6 py-3 w-96 mr-6 rounded-md" type="text" placeholder="your Email address" />
                         <input onClick={(e) => e.preventDefault() } className="bg-crimson-500 text-white px-6 py-3 rounded-md font-semibold hover:bg-puerto-600" type="submit" value="Subscribe" />
                     </form>
                 </div>

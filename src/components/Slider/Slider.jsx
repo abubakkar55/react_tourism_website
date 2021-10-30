@@ -13,7 +13,7 @@ const SliderComponent = () => {
         <div className="slider">
             <Carousel showArrows={true} autoPlay={true} infiniteLoop={true}>
 
-                {sliderData?.data?.map(item => {
+                {sliderData?.map(item => {
                     return (
                         <div className="slider-item h-screen flex items-center flex-col justify-center" style={{ backgroundImage: `linear-gradient(to right, rgba(0, 0, 0, 0.36), rgba(0, 0, 0, 0.36)), url(${item?.image})`, backgroundRepeat: "no-repeat", backgroundSize: "100% 100%" }}>
                             <h1 className="text-6xl font-semibold text-white mb-7"> {item.name} </h1>
