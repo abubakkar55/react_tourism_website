@@ -7,6 +7,9 @@ import Home from './Pages/Home';
 import FirebaseMongodbProvider from './Context/FirebaseMongodbProvider';
 import Signup from './components/Signup/Signup';
 import Login from './components/Login/Login';
+import Tours from './Pages/Tours';
+import TourDetails from './Pages/TourDetails';
+import PrivateRoute from './components/Private/PrivateRoute';
 function App() {
   return (
     <div>
@@ -21,8 +24,13 @@ function App() {
             </Route>
 
             <Route path="/tour">
-
+              <Tours />
             </Route>
+
+
+            <PrivateRoute path="/tour_details/:id">
+              <TourDetails />
+            </PrivateRoute>
 
             <Route path="/login">
               <Login />
@@ -31,6 +39,7 @@ function App() {
             <Route path="/signup">
               <Signup />
             </Route>
+
 
 
             <Route path="/destination">

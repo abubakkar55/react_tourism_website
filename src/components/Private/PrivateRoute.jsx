@@ -1,12 +1,13 @@
 import React from 'react';
 import { Route, Redirect } from "react-router-dom";
+import useFirebaseMongo from '../../Hooks/useFirebaseMongo';
 const PrivateRoute = ({ children, ...rest }) => {
-    const email = "abu";
+    const { firebase: { firebaseData } } = useFirebaseMongo();
     return (
         <Route
             {...rest}
             render={({ location }) =>
-                email ? (children) : (
+                firebaseData?.email ? (children) : (
                     <Redirect to={{
                         pathname: "/login",
                         state: { from: location }
@@ -19,4 +20,4 @@ const PrivateRoute = ({ children, ...rest }) => {
     )
 }
 
-export default PrivateRoute
+export default PrivateRoute;

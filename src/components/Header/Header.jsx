@@ -55,7 +55,12 @@ const Header = () => {
                             firebaseData?.email ?
                                 <>
                                 <span>{firebaseData?.displayName} </span>
-                                    <img className="w-12 h-12 rounded-full" src={firebaseData?.photoURL} alt="profile" />
+                                    <img 
+                                    className="w-12 h-12 rounded-full" 
+                                    src={firebaseData?.photoURL ? firebaseData?.photoURL 
+                                    : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/User_font_awesome.svg/2048px-User_font_awesome.svg.png"
+                                    } 
+                                    alt="profile" />
                                     <li onClick={logOut} className="hover:text-puerto-500">
                                         <NavLink to="/"> <ExitToApp className="log-out" /> </NavLink>
                                     </li>

@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 import useFirebaseMongo from '../../Hooks/useFirebaseMongo';
 
 const Signup = () => {
-    const { firebase: { googleSignIn, setSEmail, setSName, setSPass, registerUser, firebaseErrors, setSImg } } = useFirebaseMongo();
+    const { firebase: { googleSignIn, setSEmail, setSName, setSPass, registerUser, firebaseErrors,  } } = useFirebaseMongo();
 
     return (
         <div>
@@ -14,7 +14,7 @@ const Signup = () => {
                         <h3 className="text-center text-puerto-500 text-2xl mt-8 font-bold">SIGN UP </h3>
                         <div>
                             <div className="p-8">
-                                <form>
+                                <form onSubmit={registerUser}>
                                     <input
                                         onChange={(e) => setSName(e.target.value)}
 
@@ -33,15 +33,12 @@ const Signup = () => {
 
                                         className={`border-2   rounded-full block w-full px-4 py-3 mt-3 outline-none`} type="password" placeholder="Your password" required />
 
-                                    <input
-                                        onChange={(e) => setSImg(e.target.value)}
-                                        type="url"
-                                        className={`border-2   rounded-full block w-full px-4 py-3 mt-3 outline-none`} placeholder="Your photo url" required />
-
+                                 
 
                                     {
                                         firebaseErrors && <small className="text-red-500">{firebaseErrors} </small>
                                     }
+
 
 
                                     <div className="my-4">
@@ -50,7 +47,7 @@ const Signup = () => {
                                     </div>
 
 
-                                    <button onClick={registerUser} type="submit" className="px-8 mr-2 py-2 rounded-3xl bg-puerto-500 hover:bg-puerto-600  text-white shadow-lg">Sing Up </button>
+                                    <button type="submit" className="px-8 mr-2 py-2 rounded-3xl bg-puerto-500 hover:bg-puerto-600  text-white shadow-lg">Sing Up </button>
                                     <p className="inline-block pb-2">Already have an account?<NavLink to="/login" className="text-puerto-500 cursor-pointer">Login </NavLink> </p>
                                 </form>
 
