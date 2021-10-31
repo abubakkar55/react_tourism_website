@@ -10,6 +10,9 @@ import Login from './components/Login/Login';
 import Tours from './Pages/Tours';
 import TourDetails from './Pages/TourDetails';
 import PrivateRoute from './components/Private/PrivateRoute';
+import AddATour from './Pages/AddATour';
+import MyOrders from './Pages/MyOrders';
+import ManageAllOrders from './Pages/ManageAllOrders';
 function App() {
   return (
     <div>
@@ -25,6 +28,18 @@ function App() {
 
             <Route path="/tour">
               <Tours />
+            </Route>
+
+            <Route path="/add_a_tour">
+              <AddATour />
+            </Route>
+
+            <Route path="/my_orders">
+              <MyOrders />
+            </Route>
+
+            <Route path="/manage_all_orders">
+              <ManageAllOrders />
             </Route>
 
 

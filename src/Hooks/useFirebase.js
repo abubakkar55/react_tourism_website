@@ -9,6 +9,7 @@ const useFirebase = () => {
     // firebase data
     const [firebaseData, setFirebaseData] = useState({});
     const [firebaseErrors, setFirebaseErrors] = useState("");
+    const [loading, setLoading] = useState(true);
 
 
     // lest's Destructure signup or login data 
@@ -17,8 +18,6 @@ const useFirebase = () => {
     const [sPass, setSPass] = useState("");
 
 
-
-    const [loading, setLoading] = useState(false);
 
     // firebase settings
     const googleProvider = new GoogleAuthProvider();
@@ -33,52 +32,31 @@ const useFirebase = () => {
         })
     }
 
-    const registerUser = (e) => {
-        e.preventDefault();
-        createUserWithEmailAndPassword(auth, sEmail, sPass)
-            .then(res => {
-                updateUser();
-                setFirebaseData(res.user);
-                alert("you are successfully signed in");
-            })
-            .catch(error => {
-                setFirebaseErrors(error.message)
-            }).finally(() => {
-                setLoading(false);
-            })
-            e.target.reset();
-        }
+    const registerUser = () => {
+        return createUserWithEmailAndPassword(auth, sEmail, sPass);
+    }
 
     const loginUser = (e) => {
+        setLoading(true);
         e.preventDefault();
-        signInWithEmailAndPassword(auth, sEmail, sPass)
-            .then(res => {
-                setFirebaseData(res.user)
-            })
-            .catch(error => {
-                setFirebaseErrors(error.message)
-            }).finally(() => {
-                setLoading(false);
-            })
-        e.target.reset();
+        return signInWithEmailAndPassword(auth, sEmail, sPass)
     }
 
     // Google sign in 
     const googleSignIn = () => {
-        signInWithPopup(auth, googleProvider)
-            .then(res => {
-                setFirebaseData(res.user);
-            })
-            .catch((error) => {
-                setFirebaseErrors(error.message);
-            })
+        setLoading(true);
+        return signInWithPopup(auth, googleProvider)
     }
 
     const logOut = () => {
+        setLoading(true);
         signOut(auth)
             .then(res => {
                 setFirebaseData({});
             })
+            .finally(() => {
+                setLoading(false);
+            });
     }
 
     // user observer
@@ -89,11 +67,12 @@ const useFirebase = () => {
             } else {
                 setFirebaseData({});
             }
+            setLoading(false)
         });
     }, []);
 
 
-    return { googleSignIn, registerUser, firebaseErrors, setSEmail, setSName, setSPass, firebaseData, logOut, loginUser };
+    return { googleSignIn, registerUser, firebaseErrors, setSEmail, setSName, setSPass, firebaseData, logOut, loginUser, setFirebaseErrors, setFirebaseData, setLoading, loading, updateUser };
 }
 
 export default useFirebase;

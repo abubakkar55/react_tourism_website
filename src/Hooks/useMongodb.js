@@ -7,23 +7,19 @@ const useMongodb = () => {
 
     // slider data
     useEffect(() => {
-        axios.get("http://localhost:5000/slider/data")
+        axios.get("https://shrouded-badlands-43681.herokuapp.com/sliders_data")
             .then(res => {
                 setSliderData(res.data);
             })
-
     }, []);
 
     // Tour data
     useEffect(() => {
-        axios.get("http://localhost:5000/tour/package/data")
+        axios.get("https://shrouded-badlands-43681.herokuapp.com/tours")
             .then(res => {
                 setTourData(res.data);
             })
     }, []);
-
-
-
 
     return { sliderData, tourData }
 }

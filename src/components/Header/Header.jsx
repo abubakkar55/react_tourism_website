@@ -40,7 +40,7 @@ const Header = () => {
                                     </li>
 
                                     <li className="hover:text-puerto-500">
-                                        <NavLink activeClassName="font-semibold" to="/manage_all_orders">Add a Tour </NavLink>
+                                        <NavLink activeClassName="font-semibold" to="/add_a_tour">Add a Tour </NavLink>
                                     </li>
                                 </>
                             }
