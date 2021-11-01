@@ -9,21 +9,20 @@ const TourDetails = () => {
     const { id } = useParams();
     const [data, setData] = useState({});
     const { firebase: { firebaseData } } = useFirebaseMongo();
-    const { email } = firebaseData;
+    const { email, displayName } = firebaseData;
     const { name, image, price, description, country } = data;
 
     useEffect(() => {
         axios.get(`https://shrouded-badlands-43681.herokuapp.com/${id}`)
             .then(res => {
                 setData(res.data);
-                console.log(id, res);
             })
-    }, [])
+    }, [id])
 
 
     const onSubmitFunction = (userData) => {
         const { city, address, phone } = userData;
-        const all_info = { image, email, name, price, city, address, phone };
+        const all_info = { image, email, name, price, city, address, phone, displayName };
         axios.post("https://shrouded-badlands-43681.herokuapp.com/all_collection", all_info)
             .then(res => {
                 console.log(res.data);

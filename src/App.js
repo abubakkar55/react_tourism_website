@@ -13,6 +13,7 @@ import PrivateRoute from './components/Private/PrivateRoute';
 import AddATour from './Pages/AddATour';
 import MyOrders from './Pages/MyOrders';
 import ManageAllOrders from './Pages/ManageAllOrders';
+import About from './components/About/About';
 function App() {
   return (
     <div>
@@ -55,10 +56,8 @@ function App() {
               <Signup />
             </Route>
 
-
-
-            <Route path="/destination">
-
+            <Route path="/about">
+              <About />
             </Route>
 
 

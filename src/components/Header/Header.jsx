@@ -9,15 +9,15 @@ const Header = () => {
     const { firebase: { firebaseData, logOut } } = useFirebaseMongo();
     return (
         <div className="shadow-md">
-            <div className="h-20 container mx-auto flex justify-between items-center">
+            <div className="h-20 container mx-auto flex flex-col md:flex-row justify-center md:justify-between items-center">
                 <div>
                     <NavLink className="flex items-center" to="/">
-                        <img className="w-12" src={logo} alt="logo" />
-                        <span className="ml-2 font-semibold text-lg">ABTourism </span>
+                        <img className="w-6 md:w-12" src={logo} alt="logo" />
+                        <span className="ml-2 font-semibold md:text-lg">ABTourism </span>
                     </NavLink>
                 </div>
                 <div>
-                    <nav>
+                    <nav className="hidden md:block">
                         <ul className="flex items-center gap-7">
                             <li className="hover:text-puerto-500">
                                 <NavLink activeClassName="font-semibold" to="/">Home </NavLink>
@@ -26,7 +26,7 @@ const Header = () => {
                                 <NavLink activeClassName="font-semibold" to="/tour">Tours </NavLink>
                             </li>
                             <li className="hover:text-puerto-500">
-                                <NavLink activeClassName="font-semibold" to="/destination">Destination </NavLink>
+                                <NavLink activeClassName="font-semibold" to="/about">About us </NavLink>
                             </li>
 
                             {
@@ -48,7 +48,7 @@ const Header = () => {
                         </ul>
                     </nav>
                 </div>
-                <div>
+                <div className="hidden md:block">
                     <ul className="flex items-center gap-5">
 
                         {
@@ -76,8 +76,6 @@ const Header = () => {
                                     </li>
                                 </>
                         }
-
-
 
                     </ul>
                 </div>
