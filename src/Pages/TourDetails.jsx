@@ -23,7 +23,7 @@ const TourDetails = () => {
     const onSubmitFunction = (userData) => {
         const { city, address, phone } = userData;
         const all_info = { image, email, name, price, city, address, phone, displayName };
-        axios.post("https://safe-headland-90262.herokuapp.com/all_collection", all_info)
+        axios.post("https://safe-headland-90262.herokuapp.com/add_a_collection", all_info)
             .then(res => {
                 console.log(res.data);
             }).finally(() => {

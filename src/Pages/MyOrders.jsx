@@ -7,7 +7,7 @@ const MyOrders = () => {
     const [myOrders, setMyOrders] = useState([]);
     const { firebase: { firebaseData: { displayName } } } = useFirebaseMongo();
     useEffect(() => {
-        axios.get(`https://safe-headland-90262.herokuapp.com/my_orders?emailName=${displayName}`)
+        axios.get(`https://safe-headland-90262.herokuapp.com/own_orders?emailName=${displayName}`)
             .then(res => {
                 setMyOrders(res.data);
             })
