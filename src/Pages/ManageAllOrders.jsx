@@ -18,11 +18,8 @@ const ManageAllOrders = () => {
         if (confirmation) {
             axios.delete(`https://safe-headland-90262.herokuapp.com/${id}`)
                 .then(res => {
-                    if (res.statusText === "OK") {
-                        alert("Deleted successfully");
-                    }
-                    const remainingData = myOrders.filter(item => item._id !== id);
-                    setMyOrders(remainingData);
+                    alert("Deleted successfully");
+                    window.location.reload();
                 });
         } else {
             alert("tnq to response us");

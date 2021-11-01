@@ -17,11 +17,9 @@ const TourDetails = () => {
         const all_info = { image, email, name, price, city, address, phone, displayName };
         axios.post("https://safe-headland-90262.herokuapp.com/add_a_collection", all_info)
             .then(res => {
-                console.log(res.data);
-            }).finally(() => {
                 alert("added");
+            }).finally(() => {
                 reset();
-                //window.location.reload();
             });
     }
 
