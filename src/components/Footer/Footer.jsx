@@ -4,8 +4,8 @@ import logo from "../../images/flight.png";
 import img from "../../images/Paypa-e1541212828289.png";
 const Footer = () => {
     return (
-        <div className="px-20" style={{ backgroundColor: "#0E2737" }}>
-            <div className="py-20 container mx-auto grid grid-cols-4 gap-8">
+        <div className="px-10 md:px-20" style={{ backgroundColor: "#0E2737" }}>
+            <div className="py-20 container mx-auto grid md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <div>
                     <img className="inline" src={logo} alt="" />
                     <span className="inline text-white ml-2 font-semibold text-lg">ABTourism </span>

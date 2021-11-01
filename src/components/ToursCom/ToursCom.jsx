@@ -7,9 +7,9 @@ import { NavLink } from 'react-router-dom';
 const ToursCom = () => {
     const { mongodb: { tourData } } = useFirebaseMongo();
     return (
-        <div className="container mx-auto p-10">
+        <div className="container mx-auto p-4 md:p-10">
             <h3 className="text-center text-4xl font-medium mb-10">Our Tour packages </h3>
-            <div className="grid md:grid-cols-3 gap-x-5 gap-y-10">
+            <div className="grid md:grid-cols-3 md:gap-x-5 gap-y-10">
 
                 {tourData.map(item => {
                     const { _id, image, name, country, price, rating, review, duration, description } = item
