@@ -7,7 +7,7 @@ const AddATour = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
     const onSubmitFunction = (data) => {
-        axios.post("https://shrouded-badlands-43681.herokuapp.com/add_tour", data)
+        axios.post("https://safe-headland-90262.herokuapp.com/add_tour", data)
             .then(res => {
                 console.log(res);
             }).finally(() => {

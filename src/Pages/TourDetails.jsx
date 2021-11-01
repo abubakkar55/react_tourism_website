@@ -13,7 +13,7 @@ const TourDetails = () => {
     const { name, image, price, description, country } = data;
 
     useEffect(() => {
-        axios.get(`https://shrouded-badlands-43681.herokuapp.com/${id}`)
+        axios.get(`https://safe-headland-90262.herokuapp.com/${id}`)
             .then(res => {
                 setData(res.data);
             })
@@ -23,7 +23,7 @@ const TourDetails = () => {
     const onSubmitFunction = (userData) => {
         const { city, address, phone } = userData;
         const all_info = { image, email, name, price, city, address, phone, displayName };
-        axios.post("https://shrouded-badlands-43681.herokuapp.com/all_collection", all_info)
+        axios.post("https://safe-headland-90262.herokuapp.com/all_collection", all_info)
             .then(res => {
                 console.log(res.data);
             }).finally(() => {
