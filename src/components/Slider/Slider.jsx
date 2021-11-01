@@ -16,7 +16,7 @@ const SliderComponent = () => {
                 {sliderData?.map(item => {
                     return (
                         <div className="slider-item h-screen flex items-center flex-col justify-center" style={{ backgroundImage: `linear-gradient(to right, rgba(0, 0, 0, 0.36), rgba(0, 0, 0, 0.36)), url(${item?.image})`, backgroundRepeat: "no-repeat", backgroundSize: "100% 100%" }}>
-                            <h1 className="text-6xl font-semibold text-white mb-7"> {item.name} </h1>
+                            <h1 className="text-2xl md:text-4xl lg:text-6xl font-semibold text-white mb-7"> {item.name} </h1>
                             <button className="outline-none px-6 py-3 border-2 border-puerto-600 text-white hover:bg-puerto-600">
                                 <NavLink to="/tour">Explore Now </NavLink>
                             </button>
