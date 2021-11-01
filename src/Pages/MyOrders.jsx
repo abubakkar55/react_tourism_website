@@ -5,13 +5,13 @@ import useFirebaseMongo from '../Hooks/useFirebaseMongo';
 
 const MyOrders = () => {
     const [myOrders, setMyOrders] = useState([]);
-    const { firebase: { firebaseData: { email } } } = useFirebaseMongo();
+    const { firebase: { firebaseData: { displayName } } } = useFirebaseMongo();
     useEffect(() => {
-        axios.get(`https://safe-headland-90262.herokuapp.com/my_orders?email=${email}`)
+        axios.get(`https://safe-headland-90262.herokuapp.com/my_orders?emailName=${displayName}`)
             .then(res => {
                 setMyOrders(res.data);
             })
-    }, [email]);
+    }, [displayName]);
 
 
     return (
