@@ -15,11 +15,20 @@ const MyOrders = () => {
 
 
     const handleDelete = (id) => {
-        axios.delete(`https://safe-headland-90262.herokuapp.com/${id}`)
-        .then(res => {
-            alert("Deleted successfully");
-            console.log(res.data);
-        })    }
+        const confirmation = window.confirm("are you really wanna delete?");
+        if (confirmation) {
+            axios.delete(`https://safe-headland-90262.herokuapp.com/${id}`)
+                .then(res => {
+                    if (res.statusText === "OK") {
+                        alert("Deleted successfully");
+                    }
+                    const remainingData = myOrders.filter(item => item._id !== id);
+                    setMyOrders(remainingData);
+                });
+        } else {
+            alert("tnq to response us");
+        }
+    }
 
 
     return (
@@ -37,7 +46,7 @@ const MyOrders = () => {
                                 <h3>Email:  {item?.email} </h3>
                                 <h3>Phone:  {item?.phone} </h3>
                                 <h3>Price:  ${item?.price} </h3>
-                                <button  onClick={() => handleDelete(item?._id)} className="px-6 py-2 bg-red-600 text-white rounded-md">Delete </button>
+                                <button onClick={() => handleDelete(item?._id)} className="px-6 py-2 bg-red-600 text-white rounded-md">Delete </button>
                             </div>
                         )
                     })
