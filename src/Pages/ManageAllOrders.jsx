@@ -5,7 +5,7 @@ const ManageAllOrders = () => {
 
     const [myOrders, setMyOrders] = useState([]);
     useEffect(() => {
-        axios.get("https://safe-headland-90262.herokuapp.com/all__orders")
+        axios.get("https://safe-headland-90262.herokuapp.com/user_orders_collection")
             .then(res => {
                 setMyOrders(res.data);
                 console.log(res)
