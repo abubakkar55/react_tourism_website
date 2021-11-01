@@ -5,7 +5,7 @@ const ManageAllOrders = () => {
 
     const [myOrders, setMyOrders] = useState([]);
     useEffect(() => {
-        axios.get("https://safe-headland-90262.herokuapp.com/ordered_products")
+        axios.get("https://safe-headland-90262.herokuapp.com/ordered_tour")
             .then(res => {
                 setMyOrders(res.data);
                 console.log(res)
@@ -13,16 +13,12 @@ const ManageAllOrders = () => {
     }, []);
 
 
-
     return (
-
         <div className="container mx-auto p-12">
             <div>
-{
-    myOrders.length
-}
+
                 {
-                    myOrders.map(item => {
+                    myOrders?.map(item => {
                         return (
 
                             <div key={item._id} className="flex items-center justify-between shadow-md rounded-md px-8 py-5 mb-10">

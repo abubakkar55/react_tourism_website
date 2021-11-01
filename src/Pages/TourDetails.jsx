@@ -12,14 +12,6 @@ const TourDetails = () => {
     const { email, displayName } = firebaseData;
     const { name, image, price, description, country } = data;
 
-    useEffect(() => {
-        axios.get(`https://safe-headland-90262.herokuapp.com/${id}`)
-            .then(res => {
-                setData(res.data);
-            })
-    }, [id])
-
-
     const onSubmitFunction = (userData) => {
         const { city, address, phone } = userData;
         const all_info = { image, email, name, price, city, address, phone, displayName };
@@ -32,6 +24,13 @@ const TourDetails = () => {
                 //window.location.reload();
             });
     }
+
+    useEffect(() => {
+        axios.get(`https://safe-headland-90262.herokuapp.com/${id}`)
+            .then(res => {
+                setData(res.data);
+            })
+    }, [id])
 
 
     return (
