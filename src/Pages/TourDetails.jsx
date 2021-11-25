@@ -15,7 +15,7 @@ const TourDetails = () => {
     const onSubmitFunction = (userData) => {
         const { city, address, phone } = userData;
         const all_info = { image, email, name, price, city, address, phone, displayName };
-        axios.post("https://safe-headland-90262.herokuapp.com/add_a_collection", all_info)
+        axios.post("http://localhost:5000/add_a_collection", all_info)
             .then(res => {
                 alert("added");
             }).finally(() => {
@@ -24,8 +24,9 @@ const TourDetails = () => {
     }
 
     useEffect(() => {
-        axios.get(`https://safe-headland-90262.herokuapp.com/${id}`)
+        axios.get(`http://localhost:5000/signle_pd/${id}`)
             .then(res => {
+                console.log(res.data);
                 setData(res.data);
             })
     }, [id])

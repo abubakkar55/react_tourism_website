@@ -1,12 +1,19 @@
 import React from 'react'
 import "./Header.css";
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import logo from "../../images/flight.png";
 import { ExitToApp } from "@material-ui/icons";
 import useFirebaseMongo from '../../Hooks/useFirebaseMongo';
 
 const Header = () => {
     const { firebase: { firebaseData, logOut } } = useFirebaseMongo();
+    const location = useLocation();
+
+    if (location.pathname === "/add_a_tour") {
+        return <h1>hddfdfdf </h1>
+    }
+
+
     return (
         <div className="shadow-md">
             <div className="h-20 container mx-auto flex flex-col md:flex-row justify-center md:justify-between items-center">
@@ -54,13 +61,13 @@ const Header = () => {
                         {
                             firebaseData?.email ?
                                 <>
-                                <span>{firebaseData?.displayName} </span>
-                                    <img 
-                                    className="w-12 h-12 rounded-full" 
-                                    src={firebaseData?.photoURL ? firebaseData?.photoURL 
-                                    : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/User_font_awesome.svg/2048px-User_font_awesome.svg.png"
-                                    } 
-                                    alt="profile" />
+                                    <span>{firebaseData?.displayName} </span>
+                                    <img
+                                        className="w-12 h-12 rounded-full"
+                                        src={firebaseData?.photoURL ? firebaseData?.photoURL
+                                            : "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/User_font_awesome.svg/2048px-User_font_awesome.svg.png"
+                                        }
+                                        alt="profile" />
                                     <li onClick={logOut} className="hover:text-puerto-500">
                                         <NavLink to="/"> <ExitToApp className="log-out" /> </NavLink>
                                     </li>

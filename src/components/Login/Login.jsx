@@ -1,22 +1,19 @@
 import { Facebook } from '@material-ui/icons';
 import React from 'react';
-//import {  } from 'react-router';
-import { NavLink, useHistory, useLocation } from 'react-router-dom';
+import { NavLink, useNavigate, useLocation } from 'react-router-dom';
 import useFirebaseMongo from '../../Hooks/useFirebaseMongo';
 
 const Login = () => {
-    const { firebase: { googleSignIn, setSEmail, setSPass, loginUser, firebaseErrors, setFirebaseData, setFirebaseErrors, setLoading, loading } } = useFirebaseMongo();
+    const { firebase: { googleSignIn, setSEmail, setSPass, loginUser, firebaseErrors, setFirebaseData, setFirebaseErrors, setLoading } } = useFirebaseMongo();
 
-    const history = useHistory();
     const location = useLocation();
-
-    const Redirect_Url = location.state?.from || "/";
-
+    const navigate = useNavigate();
+    const Redirect_Url = location.state?.from?.pathname || "/";
     const handleLogin = (e) => {
         loginUser()
             .then(res => {
                 setFirebaseData(res.user);
-                history.push(Redirect_Url);
+                navigate(Redirect_Url, {replace: true});
             })
             .catch(error => {
                 setFirebaseErrors(error.message)
@@ -31,14 +28,14 @@ const Login = () => {
         googleSignIn()
             .then(res => {
                 setFirebaseData(res.user);
-                history.push(Redirect_Url);
+                navigate(Redirect_Url, {replace: true});
             })
             .catch(error => {
                 setFirebaseErrors(error.message)
             }).finally(() => {
                 setLoading(false);
             })
-        }
+    }
 
 
     return (

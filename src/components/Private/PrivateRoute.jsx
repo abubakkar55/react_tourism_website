@@ -1,9 +1,9 @@
 import React from 'react';
-import { Route, Redirect } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 import useFirebaseMongo from '../../Hooks/useFirebaseMongo';
-const PrivateRoute = ({ children, ...rest }) => {
+const PrivateRoute = ({ children }) => {
     const { firebase: { firebaseData, loading } } = useFirebaseMongo();
-
+    const location = useLocation();
     if (loading) {
         return (
             <div className="h-screen flex items-center justify-center">
@@ -11,19 +11,10 @@ const PrivateRoute = ({ children, ...rest }) => {
             </div>
         )
     }
-    
-    return (
-        <Route
-            {...rest}
-            render={({ location }) =>
-                firebaseData.email ? children :
-                    <Redirect to={{
-                        pathname: "/login",
-                        state: { from: location }
-                    }} />
-            }
-        />
-    )
+    if (!firebaseData?.email) {
+        return <Navigate to="/login" state={{ from: location }}></Navigate>
+    }
+    return children
 }
 
 export default PrivateRoute;

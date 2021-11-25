@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import NotFound from './components/NotFound/NotFound';
@@ -17,61 +17,47 @@ import About from './Pages/About';
 function App() {
   return (
     <div>
-
       <FirebaseMongodbProvider>
-
         <Router>
           <Header />
-          <Switch>
-            <Route exact path="/">
-              <Home />
+          <Routes>
+            <Route path="/" element={<Home />}>
+              
             </Route>
 
-            <Route path="/tour">
-              <Tours />
+            <Route path="/tour"  element={<Tours />}>
+              
             </Route>
 
-            <Route path="/add_a_tour">
-              <AddATour />
+            <Route path="/add_a_tour" element={<AddATour />}>
             </Route>
 
-            <Route path="/my_orders">
-              <MyOrders />
+            <Route path="/my_orders" element={<MyOrders />}>
             </Route>
 
-            <Route path="/manage_all_orders">
-              <ManageAllOrders />
+            <Route path="/manage_all_orders" element={<ManageAllOrders />}>
             </Route>
 
 
-            <PrivateRoute path="/tour_details/:id">
-              <TourDetails />
-            </PrivateRoute>
-
-            <Route path="/login">
-              <Login />
+            <Route path="/tour_details/:id" element={<PrivateRoute> <TourDetails /> </PrivateRoute>}>
             </Route>
 
-            <Route path="/signup">
-              <Signup />
+            <Route path="/login" element={<Login />}>
             </Route>
 
-            <Route path="/about">
-              <About />
+            <Route path="/signup" element={<Signup />}>
             </Route>
 
-
-
-            <Route path="*">
-              <NotFound />
+            <Route path="/about" element={<About />}>
             </Route>
 
-          </Switch>
+            <Route path="*" element={<NotFound />}>
+            </Route>
+
+          </Routes>
           <Footer />
         </Router>
-
       </FirebaseMongodbProvider>
-
     </div>
   );
 }

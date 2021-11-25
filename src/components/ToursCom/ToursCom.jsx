@@ -14,7 +14,7 @@ const ToursCom = () => {
                 {tourData.map(item => {
                     const { _id, image, name, country, price, rating, review, duration, description } = item
                     return (
-                        <div className="tour-item relative p-3 shadow rounded-md hover:shadow-lg">
+                        <div key={_id} className="tour-item relative p-3 shadow rounded-md hover:shadow-lg">
                             <img className="w-full h-48 rounded-md" src={image} alt={name} />
                             <button className="absolute top-12 left-7 px-4 rounded-full py-1  bg-puerto-500 text-white">${price} </button>
                             <div className="p-3">

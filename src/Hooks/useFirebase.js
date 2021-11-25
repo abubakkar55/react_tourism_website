@@ -1,35 +1,31 @@
 import { useEffect, useState } from 'react';
-import { GoogleAuthProvider, getAuth, signInWithPopup, createUserWithEmailAndPassword, onAuthStateChanged, signOut, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { GoogleAuthProvider, getAuth, signInWithPopup, createUserWithEmailAndPassword, onAuthStateChanged, signOut, signInWithEmailAndPassword, updateProfile, getIdToken } from "firebase/auth";
 import initFirebase from '../Firebase/FirebaseInit'
+initFirebase();
+
 const useFirebase = () => {
-
-    initFirebase();
-
-
     // firebase data
     const [firebaseData, setFirebaseData] = useState({});
     const [firebaseErrors, setFirebaseErrors] = useState("");
     const [loading, setLoading] = useState(true);
-
 
     // lest's Destructure signup or login data 
     const [sName, setSName] = useState("");
     const [sEmail, setSEmail] = useState("");
     const [sPass, setSPass] = useState("");
 
-
-
     // firebase settings
     const googleProvider = new GoogleAuthProvider();
     const auth = getAuth();
-
 
     const updateUser = () => {
         updateProfile(auth.currentUser, {
             displayName: sName,
         }).then(() => {
 
-        })
+        }).finally(() => {
+            setLoading(false);
+        });
     }
 
     const registerUser = () => {
@@ -63,6 +59,8 @@ const useFirebase = () => {
     useEffect(() => {
         onAuthStateChanged(auth, (user) => {
             if (user) {
+                getIdToken(user)
+                .then(idToken => localStorage.setItem("idToken", idToken));
                 setFirebaseData(user);
             } else {
                 setFirebaseData({});
@@ -70,7 +68,6 @@ const useFirebase = () => {
             setLoading(false)
         });
     }, []);
-
 
     return { googleSignIn, registerUser, firebaseErrors, setSEmail, setSName, setSPass, firebaseData, logOut, loginUser, setFirebaseErrors, setFirebaseData, setLoading, loading, updateUser };
 }

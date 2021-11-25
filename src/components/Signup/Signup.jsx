@@ -1,39 +1,43 @@
 import React from 'react';
 import { Facebook } from "@material-ui/icons/"
-import { NavLink, useHistory } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import useFirebaseMongo from '../../Hooks/useFirebaseMongo';
 
 const Signup = () => {
 
-    const { firebase: { googleSignIn, setSEmail, setSName, setSPass, registerUser, firebaseErrors, setFirebaseData, setFirebaseErrors, updateUser} } = useFirebaseMongo();
+    const { firebase: { googleSignIn, setSEmail, setSName, setSPass, registerUser, firebaseErrors, setFirebaseData, setFirebaseErrors, updateUser, setLoading } } = useFirebaseMongo();
 
-    const history = useHistory();
+    const navigate = useNavigate();
 
     const handleGoogleSignIn = (e) => {
         googleSignIn()
             .then(res => {
                 setFirebaseData(res.user);
-                history.push("/");
+                navigate("/");
             })
             .catch(error => {
                 setFirebaseErrors(error.message)
-            })
-        }
+            }).finally(() => {
+                setLoading(false);
+            });
+    }
 
-        const handleRegister = (e) => {
-            e.preventDefault();
-            registerUser()
+    const handleRegister = (e) => {
+        e.preventDefault();
+        registerUser()
             .then(res => {
                 updateUser();
                 setFirebaseData(res.user);
-              alert("you are registered successfully");
-                history.push("/");
+                alert("you are registered successfully");
+                navigate("/");
             })
             .catch(error => {
                 setFirebaseErrors(error.message)
+            }).finally(() => {
+                setLoading(false);
             });
-            e.target.reset();
-        }
+        e.target.reset();
+    }
 
 
     return (
