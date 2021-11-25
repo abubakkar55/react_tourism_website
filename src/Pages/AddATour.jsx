@@ -1,5 +1,5 @@
-import axios from 'axios'
-import React, { useEffect, useState } from 'react'
+import axios from 'axios';
+import React from 'react';
 import { useForm } from "react-hook-form";
 
 const AddATour = () => {
@@ -7,7 +7,7 @@ const AddATour = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
     const onSubmitFunction = (data) => {
-        axios.post("http://localhost:5000/add_tour", data)
+        axios.post("https://infinite-forest-12039.herokuapp.com/add_tour", data)
             .then(res => {
                 console.log(res);
             }).finally(() => {

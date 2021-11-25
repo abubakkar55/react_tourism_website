@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import useFirebase from './useFirebase';
 
 const useMongodb = () => {
@@ -9,7 +9,7 @@ const useMongodb = () => {
     const { firebaseData } = useFirebase();
     // slider data
     useEffect(() => {
-        axios.get("http://localhost:5000/sliders_data")
+        axios.get("https://infinite-forest-12039.herokuapp.com/sliders_data")
             .then(res => {
                 setSliderData(res.data);
             })
@@ -17,7 +17,7 @@ const useMongodb = () => {
 
     // Tour data
     useEffect(() => {
-        axios.get("http://localhost:5000/tours")
+        axios.get("https://infinite-forest-12039.herokuapp.com/tours")
             .then(res => {
                 setTourData(res.data);
             })

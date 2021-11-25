@@ -1,11 +1,11 @@
 import axios from 'axios';
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 const ManageAllOrders = () => {
 
     const [myOrders, setMyOrders] = useState([]);
     useEffect(() => {
-        axios.get("http://localhost:5000/ordered_tour")
+        axios.get("https://infinite-forest-12039.herokuapp.com/ordered_tour")
             .then(res => {
                 setMyOrders(res.data);
                 console.log(res)
@@ -16,7 +16,7 @@ const ManageAllOrders = () => {
     const handleDelete = (id) => {
         const confirmation = window.confirm("are you really wanna delete?");
         if (confirmation) {
-            axios.delete(`http://localhost:5000/${id}`)
+            axios.delete(`https://infinite-forest-12039.herokuapp.com/${id}`)
                 .then(res => {
                     alert("Deleted successfully");
                     window.location.reload();

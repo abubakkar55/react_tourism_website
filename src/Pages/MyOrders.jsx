@@ -1,6 +1,5 @@
-import React from 'react';
-import { useState, useEffect } from 'react';
 import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import useFirebaseMongo from '../Hooks/useFirebaseMongo';
 
 const MyOrders = () => {
@@ -9,7 +8,7 @@ const MyOrders = () => {
 
     useEffect(() => {
         setIsFetching(true);
-        fetch(`http://localhost:5000/users/${firebaseData?.email}`, {
+        fetch(`https://infinite-forest-12039.herokuapp.com/users/${firebaseData?.email}`, {
             headers: {
                 'authorization': `Bearer ${localStorage.getItem("idToken")}`
             }
@@ -27,7 +26,7 @@ const MyOrders = () => {
     const handleDelete = (id) => {
         const confirmation = window.confirm("are you really wanna delete?");
         if (confirmation) {
-            axios.delete(`http://localhost:5000/${id}`)
+            axios.delete(`https://infinite-forest-12039.herokuapp.com/${id}`)
                 .then(res => {
                     alert("Deleted successfully");
                     window.location.reload();
