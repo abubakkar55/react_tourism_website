@@ -1,10 +1,10 @@
 import React from 'react';
+import { Carousel } from 'react-responsive-carousel';
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { NavLink } from 'react-router-dom';
+import useFirebaseMongo from './../../Hooks/useFirebaseMongo';
 import './Slider.css';
 
-import useFirebaseMongo from './../../Hooks/useFirebaseMongo';
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
-import { Carousel } from 'react-responsive-carousel';
-import { NavLink } from 'react-router-dom';
 
 const SliderComponent = () => {
     const { mongodb: { sliderData } } = useFirebaseMongo();
@@ -14,10 +14,9 @@ const SliderComponent = () => {
             <Carousel showArrows={true} autoPlay={true} infiniteLoop={true}>
 
                 {
-                    !sliderData.length > 0 ?
+                    sliderData.length > 0 ?
 
                         (
-
                             sliderData?.map(item => {
                                 return (
                                     <div key={item?._id} className="slider-item h-screen flex items-center flex-col justify-center" style={{ backgroundImage: `linear-gradient(to right, rgba(0, 0, 0, 0.36), rgba(0, 0, 0, 0.36)), url(${item?.image})`, backgroundRepeat: "no-repeat", backgroundSize: "100% 100%" }}>
@@ -30,12 +29,7 @@ const SliderComponent = () => {
                             })
                         )
 
-                        : <h1>...Loading </h1>
-
-
-
-
-
+                        : <img className="flex h-screen justify-center items-center" src="https://assets.materialup.com/uploads/fa8430a1-4dea-49d9-a4a3-e5c6bf0b2afb/preview.gif" alt="" />
                 }
 
             </Carousel>
