@@ -7,13 +7,6 @@ import useFirebaseMongo from '../../Hooks/useFirebaseMongo';
 
 const Header = () => {
     const { firebase: { firebaseData, logOut } } = useFirebaseMongo();
-    const location = useLocation();
-
-    if (location.pathname === "/add_a_tour") {
-        return <h1>hddfdfdf </h1>
-    }
-
-
     return (
         <div className="shadow-md">
             <div className="h-20 container mx-auto flex flex-col md:flex-row justify-center md:justify-between items-center">
